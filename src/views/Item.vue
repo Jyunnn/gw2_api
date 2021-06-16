@@ -1,29 +1,38 @@
 <template>
   <h1>Item</h1>
-  <p v-if="gw2_AllDaily.data.length == 0"> Loading... </p>
-  <p v-else> {{ gw2_AllDaily }} </p>
+  <div class="my-5" v-for="daily in gw2_PveDaily.data" :key="daily.id">
+    <p class="text-xl"> {{ daily.name }} </p>
+    <p class="text-sm"> {{ daily.description }} </p>
+    <p class="text-sm"> {{ daily.requirement}} </p>
+  </div>
 </template>
 
 <script>
-import { onMounted, reactive } from 'vue';
+import { reactive } from 'vue';
 import axios from 'axios';
 
 export default {
   setup() {
-    const gw2_AllDaily = reactive({data:[]});
+    const gw2_AllDaily = reactive({});
     const gw2_PveDaily = reactive({data:[]});
 
-    function pullData(){
-
-    }
-    pullData();
-    onMounted(()=>{
-      axios.get('https://api.guildwars2.com/v2/achievements/daily')
-      .then((response) => {
-        console.log(response);
-        gw2_AllDaily.data = response.data
-      })
+    axios.get('https://api.guildwars2.com/v2/achievements/daily')
+    .then((response) => {
+      console.log(response);
+      gw2_AllDaily.data = response.data
+      getDaily(gw2_AllDaily.data.pve, gw2_PveDaily)
     })
+
+    function getDaily(daily, valueName) {
+      let id = [];
+      daily.forEach(element => {
+          id.push(element.id)            
+      });
+      axios.get(`https://api.guildwars2.com/v2/achievements?ids=${id.join(',')}&lang=en`)
+      .then((responent)=>{
+          valueName.data = responent.data
+      })    
+    }
 
     return {
       gw2_AllDaily, gw2_PveDaily
