@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/GW2Aurene.png">
-    <HelloWorld msg="Welcome to GW Erio"/>
+    <!-- <img alt="Vue logo" src="../assets/GW2Aurene.png"> -->
+    <HelloWorld msg="HOME"/>
   </div>
 </template>
 
