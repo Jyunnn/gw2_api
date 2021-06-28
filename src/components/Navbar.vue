@@ -8,9 +8,9 @@
       <div class="dropdown">
         <router-link to="/daily">Daily</router-link>
         <div class="dropdown-content">
-          <router-link to="/dailys">Daily</router-link>
-          <router-link to="/dailyss">Daily</router-link>
-          <router-link to="/dailysss">Daily</router-link>
+          <router-link to="/daily">Daily</router-link>
+          <router-link to="/daily">Daily</router-link>
+          <router-link to="/daily">Daily</router-link>
         </div>
       </div>
     </div>
