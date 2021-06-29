@@ -8,7 +8,7 @@ export default createStore({
 
   },
   mutations: {
-    addAllDaily: (state, daily) => {
+    addGW2AllDaily: (state, daily) => {
       state.gw2_AllDaily = daily
     }
   },
