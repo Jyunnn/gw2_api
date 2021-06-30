@@ -24,6 +24,7 @@ export default {
     const AllDaily = computed(()=>{
       return store.getters.getAllDaily
     })
+    // 測試
     // axios.get('https://api.guildwars2.com/v2/achievements/daily')
     // .then((response) => {
     //   gw2_AllDaily.data = response.data
