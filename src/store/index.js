@@ -4,7 +4,6 @@ import axios from 'axios';
 export default createStore({
   state: {
     gw2_AllDaily:{},
-    count:0
 
   },
   mutations: {
@@ -14,9 +13,10 @@ export default createStore({
   },
   actions: {
     getGW2AllDaily: (context) => {
-      axios.get('https://api.guildwars2.com/v2/achievements/daily')
+      return axios.get('https://api.guildwars2.com/v2/achievements/daily')
       .then((response) => {
-        context.commit('addAllDaily', response.data)
+        context.commit('addGW2AllDaily', response.data)
+        return response.data
       })
     }
   },
@@ -26,8 +26,5 @@ export default createStore({
     getAllDaily: (state) => {
       return state.gw2_AllDaily
     },
-    getCount: (state) => {
-      return state.count
-    }
   }
 })
